@@ -39,6 +39,20 @@ section {
     padding: 2em 0;
 }
 
+div h3 {
+    margin: 0.1em 0em;
+}
+
+section a {
+    text-decoration: none;
+    border-radius: 0.5em;
+    background-color: blueviolet;
+    color: inherit;
+    padding: 0.1em 0.4em;
+    
+    transition: background-color 0.4s;
+}
+
 img {
     width: 700px;
     height: auto;
