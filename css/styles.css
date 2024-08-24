@@ -36,9 +36,10 @@ section {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 1em;
+    padding: 2em 0;
 }
 
-img#traffic_simulator {
+img {
     width: 700px;
     height: auto;
     border-radius: 2em;
