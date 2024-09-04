@@ -7,10 +7,9 @@ const nextButton = document.getElementById('next');
 const spanElement = document.getElementById('span');
 const prevButton = document.getElementById('prev');
 
-let index = 0;
-spanElement.textContent = 0;
-
+let moduleSelectionIndex = 0;
 let moduleSelectionToolMaxImages = 3;
+spanElement.textContent = 0;
 
 
 ///////////////////
@@ -18,13 +17,20 @@ let moduleSelectionToolMaxImages = 3;
 ///////////////////
 function navigate(projectTitle, direction) {
 
-    if (direction == "next") 
-        index += 1;
-    else 
-        index -= 1;
-
     switch(projectTitle) {
-        case "module_selection_tool": changeImage(projectTitle, moduleSelectionToolMaxImages);
+        case "module_selection_tool": 
+            if (direction == "next") 
+                moduleSelectionIndex += 1;
+            else 
+                moduleSelectionIndex -= 1;
+                
+            if (moduleSelectionIndex > moduleSelectionToolMaxImages) {
+                moduleSelectionIndex = 0;
+            } else if (moduleSelectionIndex < 0) {
+                moduleSelectionIndex = moduleSelectionToolMaxImages;
+            }
+
+            changeImage(projectTitle, moduleSelectionIndex);
         
         case "e_commerce_system":
 
@@ -37,16 +43,8 @@ function navigate(projectTitle, direction) {
     }
 }
 
-function changeImage(projectTitle, max) {
+function changeImage(projectTitle, index) {
     const img = document.getElementById(projectTitle);
-    //console.log(img);
-
-    if (index > max) {
-        index = 0;
-    } else if (index < 0) {
-        index = max;
-    }
-
     spanElement.textContent = index;
     img.src = `img/2_modulesel/modulesel_${index}.png`;
 }
