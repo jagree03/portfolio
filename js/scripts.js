@@ -1,7 +1,15 @@
 ///////////////////
-// Accessing elements in the DOM
+// Accessing elements in the DOM, const variables.
 ///////////////////
 const traffic_simulatorImage = document.getElementById('traffic_simulator');
+
+const nextButton = document.getElementById('next');
+const prevButton = document.getElementById('prev');
+
+
+///////////////////
+// Functions
+///////////////////
 
 
 
