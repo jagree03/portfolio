@@ -7,8 +7,35 @@ const nextButton = document.getElementById('next');
 const spanElement = document.getElementById('span');
 const prevButton = document.getElementById('prev');
 
+
+///////////////////
+// Mutable variable declarations
+///////////////////
+
+// Traffic Simulator
+let trafficSimIndex = 0;
+let trafficSimMaxImages = 3;
+
+// Module Selection tool
 let moduleSelectionIndex = 0;
 let moduleSelectionToolMaxImages = 3;
+
+// E-commerce System Prototype
+let eCommerceIndex = 0;
+let eCommerceMaxImages = 3;
+
+// Cafe Oasis Mobile App
+let cafeOasisIndex = 0;
+let cafeOasisMaxImages = 3;
+
+// Media Oasis Mobile App
+let mediaOasisIndex = 0;
+let mediaOasisMaxImages = 3;
+
+// Projector Palace Front End Website
+let projectorPalaceIndex = 0;
+let projectorPalaceMaxImages = 3;
+
 spanElement.textContent = 0;
 
 
