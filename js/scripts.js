@@ -116,7 +116,6 @@ function navigate(projectTitle, direction) {
             }
 
             changeImage(projectTitle, projectorPalaceIndex);
-    
     }
 }
 
