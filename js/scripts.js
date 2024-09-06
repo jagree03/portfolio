@@ -45,6 +45,8 @@ spanElement.textContent = 0;
 function navigate(projectTitle, direction) {
 
     switch(projectTitle) {
+        case "traffic_simulator":
+
         case "module_selection_tool": 
             if (direction == "next") 
                 moduleSelectionIndex += 1;
@@ -60,12 +62,60 @@ function navigate(projectTitle, direction) {
             changeImage(projectTitle, moduleSelectionIndex);
         
         case "e_commerce_system":
+            if (direction == "next") 
+                eCommerceIndex += 1;
+            else 
+                eCommerceIndex -= 1;
+                
+            if (eCommerceIndex > eCommerceMaxImages) {
+                eCommerceIndex = 0;
+            } else if (eCommerceIndex < 0) {
+                eCommerceIndex = eCommerceMaxImages;
+            }
+
+            changeImage(projectTitle, eCommerceIndex);
 
         case "cafe_oasis":
+            if (direction == "next") 
+                cafeOasisIndex += 1;
+            else 
+                cafeOasisIndex -= 1;
+                
+            if (cafeOasisIndex > cafeOasisMaxImages) {
+                cafeOasisIndex = 0;
+            } else if (moduleSelectionIndex < 0) {
+                cafeOasisIndex = cafeOasisMaxImages;
+            }
+
+            changeImage(projectTitle, cafeOasisMaxImages);
 
         case "media_oasis":
+            if (direction == "next") 
+                mediaOasisIndex += 1;
+            else 
+                mediaOasisIndex -= 1;
+                
+            if (mediaOasisIndex > mediaOasisMaxImages) {
+                mediaOasisIndex = 0;
+            } else if (mediaOasisIndex < 0) {
+                mediaOasisIndex = mediaOasisMaxImages;
+            }
 
-        case "frontend_lab":
+            changeImage(projectTitle, mediaOasisIndex);
+
+        case "projector_palace":
+            if (direction == "next") 
+                projectorPalaceIndex += 1;
+            else 
+                projectorPalaceIndex -= 1;
+                
+            if (projectorPalaceIndex > projectorPalaceMaxImages) {
+                projectorPalaceIndex = 0;
+            } else if (projectorPalaceIndex < 0) {
+                projectorPalaceIndex = projectorPalaceMaxImages;
+            }
+
+            changeImage(projectTitle, projectorPalaceIndex);
     
     }
 }
@@ -79,7 +129,7 @@ function changeImage(projectTitle, index, delay = 0) {
 
     // wait for the fade out transition to complete
     setTimeout( () => {
-        img.src = `img/2_modulesel/modulesel_${index}.png`;
+        img.src = `img/${projectTitle}/${index}.png`;
         img.onload = () => {
             // fade in the new image by removing the fade added on the previous image.
             img.classList.remove('fade');
