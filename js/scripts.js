@@ -43,10 +43,21 @@ function navigate(projectTitle, direction) {
     }
 }
 
-function changeImage(projectTitle, index) {
+function changeImage(projectTitle, index, delay = 0) {
     const img = document.getElementById(projectTitle);
     spanElement.textContent = index;
-    img.src = `img/2_modulesel/modulesel_${index}.png`;
+
+    // fade out
+    img.classList.add('fade');
+
+    // wait for the fade out transition to complete
+    setTimeout( () => {
+        img.src = `img/2_modulesel/modulesel_${index}.png`;
+        img.onload = () => {
+            // fade in the new image by removing the fade added on the previous image.
+            img.classList.remove('fade');
+        };
+    }, 100); // 100 milliseconds (0.1 s) Timeout duration matches the CSS transition duration
 }
 
 

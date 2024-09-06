@@ -61,7 +61,12 @@ img {
     width: 700px;
     height: auto;
     border-radius: 2em;
-    transition: all 0.3s ease-in-out;
+    transition: opacity 0.1s ease-in-out;
+    opacity: 1;
+}
+
+img.fade {
+    opacity: 0;
 }
 
 
@@ -97,6 +102,9 @@ div#imgWithNavigation span {
     color: black;
     display: block;
     width: 27px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 2px solid black;
+    padding: 0em 0.2em;
     transition: opacity 0.5s, font-size 0.2s;
 }
 
