@@ -46,6 +46,20 @@ function navigate(projectTitle, direction, span) {
 
     switch(projectTitle) {
         case "traffic_simulator":
+            if (direction == "next") 
+                trafficSimIndex += 1;
+            else 
+                trafficSimIndex -= 1;
+                
+            if (trafficSimIndex > trafficSimMaxImages) {
+                trafficSimIndex = 0;
+            } else if (trafficSimIndex < 0) {
+                trafficSimIndex = trafficSimMaxImages;
+            }
+
+            span.textContent = trafficSimIndex;
+
+            changeImage(projectTitle, moduleSelectionIndex);
 
         case "module_selection_tool": 
             if (direction == "next") 
@@ -87,7 +101,7 @@ function navigate(projectTitle, direction, span) {
                 
             if (cafeOasisIndex > cafeOasisMaxImages) {
                 cafeOasisIndex = 0;
-            } else if (moduleSelectionIndex < 0) {
+            } else if (cafeOasisIndex < 0) {
                 cafeOasisIndex = cafeOasisMaxImages;
             }
 
@@ -151,10 +165,7 @@ function resetSpanTextContent(span) {
 
 function findMatchingSpan(id) {
     for (const span of spanArray) {
-        console.log(span);
         let span_id = span.parentNode.parentNode.firstChild.nextSibling.id;
-        console.log(id);
-
         if (span_id == id) {
             return span;
         }
@@ -177,11 +188,12 @@ function findMatchingSpan(id) {
 //     traffic_simulatorImage.style.height = "auto";
 // })
 
+
 nextButtonArray.forEach(next => {
     next.addEventListener('click', ev => {
         const project = ev.target.parentElement.parentElement.firstElementChild.id; // traverse around the DOM tree to locate the img alt text stored in another <div> element.
         const matchingSpan = findMatchingSpan(project);
-        //console.log(project);
+        console.log("Project: " + project);
         navigate(project, "next", matchingSpan);
     })
 })
