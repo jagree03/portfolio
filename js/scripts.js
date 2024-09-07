@@ -151,6 +151,7 @@ function resetSpanTextContent(span) {
 
 function findMatchingSpan(id) {
     for (const span of spanArray) {
+        console.log(span);
         let span_id = span.parentNode.parentNode.firstChild.nextSibling.id;
         console.log(id);
 
