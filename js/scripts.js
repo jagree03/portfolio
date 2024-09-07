@@ -164,17 +164,17 @@ function findMatchingSpan(id) {
 ///////////////////
 // Event listeners
 ///////////////////
-traffic_simulatorImage.addEventListener('mouseover', ev => {
-    traffic_simulatorImage.src = "img/trafficsim_01.gif";
-    traffic_simulatorImage.style.width = "700px";
-    traffic_simulatorImage.style.height = "auto";
-})
+// traffic_simulatorImage.addEventListener('mouseover', ev => {
+//     traffic_simulatorImage.src = "img/trafficsim_01.gif";
+//     traffic_simulatorImage.style.width = "700px";
+//     traffic_simulatorImage.style.height = "auto";
+// })
 
-traffic_simulatorImage.addEventListener('mouseout', ev => {
-    traffic_simulatorImage.src = "img/trafficsim_00.png";
-    traffic_simulatorImage.style.width = "700px";
-    traffic_simulatorImage.style.height = "auto";
-})
+// traffic_simulatorImage.addEventListener('mouseout', ev => {
+//     traffic_simulatorImage.src = "img/trafficsim_00.png";
+//     traffic_simulatorImage.style.width = "700px";
+//     traffic_simulatorImage.style.height = "auto";
+// })
 
 nextButtonArray.forEach(next => {
     next.addEventListener('click', ev => {
