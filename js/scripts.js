@@ -3,13 +3,9 @@
 ///////////////////
 const traffic_simulatorImage = document.getElementById('traffic_simulator');
 
-const nextButton = document.getElementsByClassName('next');
-const spanElement = document.getElementsByClassName('span');
-const prevButton = document.getElementsByClassName('prev');
-
-let nextButtonArray = [...nextButton];
-let spanArray = [...spanElement];
-let prevButtonArray = [...prevButton];
+const nextButtons = document.querySelectorAll('.next');
+const spanElements = document.querySelectorAll('.span');
+const prevButtons = document.querySelectorAll('.prev');
 
 ///////////////////
 // Mutable variable declarations
@@ -58,8 +54,8 @@ function navigate(projectTitle, direction, span) {
             }
 
             span.textContent = trafficSimIndex;
-
-            changeImage(projectTitle, moduleSelectionIndex);
+            changeImage(projectTitle, trafficSimIndex);
+            break;
 
         case "module_selection_tool": 
             if (direction == "next") 
@@ -74,8 +70,8 @@ function navigate(projectTitle, direction, span) {
             }
 
             span.textContent = moduleSelectionIndex;
-
             changeImage(projectTitle, moduleSelectionIndex);
+            break;
         
         case "e_commerce_system":
             if (direction == "next") 
@@ -90,8 +86,8 @@ function navigate(projectTitle, direction, span) {
             }
             
             span.textContent = eCommerceIndex;
-
             changeImage(projectTitle, eCommerceIndex);
+            break;
 
         case "cafe_oasis":
             if (direction == "next") 
@@ -106,8 +102,8 @@ function navigate(projectTitle, direction, span) {
             }
 
             span.textContent = cafeOasisIndex;
-
-            changeImage(projectTitle, cafeOasisMaxImages);
+            changeImage(projectTitle, cafeOasisIndex);
+            break;
 
         case "media_oasis":
             if (direction == "next") 
@@ -122,8 +118,8 @@ function navigate(projectTitle, direction, span) {
             }
 
             span.textContent = mediaOasisIndex;
-
             changeImage(projectTitle, mediaOasisIndex);
+            break;
 
         case "projector_palace":
             if (direction == "next") 
@@ -138,13 +134,19 @@ function navigate(projectTitle, direction, span) {
             }
 
             span.textContent = projectorPalaceIndex;
-
             changeImage(projectTitle, projectorPalaceIndex);
+            break;
     }
 }
 
 function changeImage(projectTitle, index, delay = 0) {
     const img = document.getElementById(projectTitle);
+    // console.log("traf: " + trafficSimIndex);
+    // console.log("modul: " + moduleSelectionIndex);
+    // console.log("ecom: " + eCommerceIndex);
+    // console.log("cafe: " + cafeOasisIndex);
+    // console.log("mediaoasis: " + mediaOasisIndex);
+    // console.log("projector: " + projectorPalaceIndex);
 
     // fade out
     img.classList.add('fade');
@@ -164,9 +166,9 @@ function resetSpanTextContent(span) {
 }
 
 function findMatchingSpan(id) {
-    for (const span of spanArray) {
-        let span_id = span.parentNode.parentNode.firstChild.nextSibling.id;
-        if (span_id == id) {
+    for (const span of spanElements) {
+        let span_id = span.parentNode.parentNode.firstChild.nextSibling.id; // capture img element's id of each span of all span elements
+        if (span_id == id) { // check if the img element id, matches the passed in id.
             return span;
         }
     }
@@ -176,6 +178,7 @@ function findMatchingSpan(id) {
 ///////////////////
 // Event listeners
 ///////////////////
+
 // traffic_simulatorImage.addEventListener('mouseover', ev => {
 //     traffic_simulatorImage.src = "img/trafficsim_01.gif";
 //     traffic_simulatorImage.style.width = "700px";
@@ -188,22 +191,21 @@ function findMatchingSpan(id) {
 //     traffic_simulatorImage.style.height = "auto";
 // })
 
-
-nextButtonArray.forEach(next => {
+nextButtons.forEach(next => {
     next.addEventListener('click', ev => {
-        const project = ev.target.parentElement.parentElement.firstElementChild.id; // traverse around the DOM tree to locate the img alt text stored in another <div> element.
-        const matchingSpan = findMatchingSpan(project);
-        console.log("Project: " + project);
-        navigate(project, "next", matchingSpan);
+        const projectId = ev.target.parentElement.parentElement.firstElementChild.id; // traverse around the DOM tree to locate the img alt text stored in another <div> element.
+        const matchingSpan = findMatchingSpan(projectId);
+        //console.log("Project: " + projectId);
+        navigate(projectId, "next", matchingSpan);
     })
 })
 
-prevButtonArray.forEach(prev => {
+prevButtons.forEach(prev => {
     prev.addEventListener('click', ev => {
-        const project = ev.target.parentElement.parentElement.firstElementChild.id; // traverse around the DOM tree to locate the img alt text stored in another <div> element.
-        const matchingSpan = findMatchingSpan(project);
-        //console.log(project);
-        navigate(project, "prev", matchingSpan);
+        const projectId = ev.target.parentElement.parentElement.firstElementChild.id; // traverse around the DOM tree to locate the img alt text stored in another <div> element.
+        const matchingSpan = findMatchingSpan(projectId);
+        //console.log("Project: " + projectId);
+        navigate(projectId, "prev", matchingSpan);
     })
 })
 
@@ -211,4 +213,4 @@ prevButtonArray.forEach(prev => {
 ///////////////////
 // On-load - On-Start
 ///////////////////
-spanArray.forEach(span => span.textContent = 0);
+spanElements.forEach(span => span.textContent = 0);
